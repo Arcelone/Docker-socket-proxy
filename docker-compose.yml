@@ -1,0 +1,9 @@
+services:
+  nginx-docker-proxy:
+    image: YOUR-CUSTOM-IMAGE-NAME-HERE
+    restart: unless-stopped
+    read_only: true
+    volumes:
+      - ./nginx-conf/:/etc/nginx/conf.d/:ro # if you want to override the conf 
+      # :ro here don't mean that you can't send request to the socket it juste mean that you can't delet the file 
+      - /var/run/docker.sock:/var/run/docker.sock:ro
